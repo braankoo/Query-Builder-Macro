@@ -2,7 +2,7 @@
 Find and update multiple columns with different values (Builder macro) 
 
 
-        DB::connection('connection_name')->table('table_to_work_with')->updateValueByColumn(
+        DB::connection('connection_name')->table('table_to_work_with')->updateValueByColumns(
             'colum_to_update',
             [
                 "columns" => [
