@@ -17,25 +17,29 @@ class QueryBuilder {
 
         return function (string $column, array $data) {
 
-            $query = "UPDATE {$this->connection->getDatabaseName()}.{$this->from} SET {$column} = CASE ";
+            $query = "UPDATE {$this->connection->getDatabaseName()}.{$this->from} SET {$column} = CASE";
 
             for ( $i = 0; $i < count($data); $i ++ )
             {
                 $c = 0;
                 foreach ( $data[$i]['columns'] as $key => $value )
                 {
-                    $query .= "WHEN {$key} = '{$value}' ";
                     if ($c > 0)
                     {
-                        $query .= " AND {$key} = $value";
+                        $query .= "AND {$key} = '$value' ";
+                    } else
+                    {
+                        $query .= " WHEN {$key} = '{$value}' ";
                     }
-
                     $c ++;
+
+
                 }
-                $query .= " THEN {$data[$i]['value'][0]} ";
+                $query .= "THEN {$data[$i]['value'][0]}";
 
             }
-            $query .= "END";
+
+            $query .= " END";
 
             $this->connection->statement($query);
 
