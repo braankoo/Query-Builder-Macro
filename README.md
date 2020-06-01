@@ -9,8 +9,7 @@ Find and update multiple columns with different values (Builder macro)
                     "column_one" => "value",
                     "column_two" => "value2",
                 ],
-                "value"   => [ "new value"
-                ]
+                "value"   => [ "new value"]
             ],
 
             [
