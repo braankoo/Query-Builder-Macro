@@ -12,7 +12,7 @@ class QueryBuilder {
     /**
      * @return \Closure
      */
-    public function updateValueByColumn()
+    public function updateValueByColumns()
     {
 
         return function (string $column, array $data) {
